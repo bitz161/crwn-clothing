@@ -13,8 +13,6 @@ const ProductCard = ({ product }) => {
 
   const handleMessage = () => {
     cartItems.length >= 0 ? SetMessage(false) : SetMessage(true);
-    console.log(cartItems.length);
-    console.log(SetMessage, message);
   };
 
   const multipleHandle = () => {
