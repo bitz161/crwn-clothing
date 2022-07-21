@@ -1,0 +1,14 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  .cart-item-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    .arrowIcon {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
