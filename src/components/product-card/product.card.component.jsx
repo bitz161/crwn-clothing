@@ -6,7 +6,8 @@ import { MessageContext } from "../../contexts/empty-message.context";
 
 const ProductCard = ({ product }) => {
   const { name, imageUrl, price } = product;
-  const { addItemToCart, cartItems } = useContext(CartContext);
+  const { addItemToCart, cartItems, setQuantityValue } =
+    useContext(CartContext);
   const { message, SetMessage } = useContext(MessageContext);
 
   const addProducToCart = () => addItemToCart(product);
