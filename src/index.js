@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { BrowserRouter } from "react-router-dom";
-
+import { CategoriesProvider } from "./contexts/categories.context";
 import App from "./App";
 import { UserProvider } from "./contexts/user.context";
-import { ProductProvider } from "./contexts/product.context";
 import { CardProvider } from "./contexts/cart.context";
 import { MessageProvider } from "./contexts/empty-message.context";
 import reportWebVitals from "./reportWebVitals";
@@ -16,13 +15,13 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ProductProvider>
+        <CategoriesProvider>
           <CardProvider>
             <MessageProvider>
               <App />
             </MessageProvider>
           </CardProvider>
-        </ProductProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
