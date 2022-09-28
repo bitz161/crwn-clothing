@@ -3,7 +3,7 @@ import {
   ShoppingIcon,
   ItemCount,
 } from "./cart-icon.styles.jsx";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 
 const CartIcon = () => {
