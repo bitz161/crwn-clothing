@@ -1,29 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
 import { BrowserRouter } from "react-router-dom";
 import { CategoriesProvider } from "./contexts/categories.context";
 import App from "./App";
 import { UserProvider } from "./contexts/user.context";
 import { CardProvider } from "./contexts/cart.context";
-import { MessageProvider } from "./contexts/empty-message.context";
 import reportWebVitals from "./reportWebVitals";
 import "./index.scss";
+
+import { store } from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
+    <Provider store={store}>
+      <BrowserRouter>
         <CategoriesProvider>
           <CardProvider>
-            <MessageProvider>
-              <App />
-            </MessageProvider>
+            <App />
           </CardProvider>
         </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
