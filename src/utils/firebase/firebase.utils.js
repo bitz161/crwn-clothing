@@ -70,15 +70,17 @@ export const getCategoriesAndDocuments = async () => {
 
   //access the database
   const q = query(collectionRef);
+
   const querySnapShot = await getDocs(q);
+  return querySnapShot.docs.map((docSnapshot) => docSnapshot.data());
 
-  const categoryMap = querySnapShot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
+  // .reduce((acc, docSnapshot) => {
+  //   const { title, items } = docSnapshot.data();
+  //   acc[title.toLowerCase()] = items;
+  //   return acc;
+  // }, {});
 
-  return categoryMap;
+  // return categoryMap;
 };
 
 export const createUserDocumentFromAuth = async (

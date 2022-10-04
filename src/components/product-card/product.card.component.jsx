@@ -2,24 +2,13 @@ import "./product-card.styles.scss";
 import Button, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import { MessageContext } from "../../contexts/empty-message.context";
 
 const ProductCard = ({ product }) => {
   const { name, imageUrl, price } = product;
   const { addItemToCart, cartItems, setQuantityValue } =
     useContext(CartContext);
-  const { message, SetMessage } = useContext(MessageContext);
 
   const addProducToCart = () => addItemToCart(product);
-
-  const handleMessage = () => {
-    cartItems.length >= 0 ? SetMessage(false) : SetMessage(true);
-  };
-
-  const multipleHandle = () => {
-    addProducToCart();
-    handleMessage();
-  };
 
   return (
     <div className="product-card-container">
@@ -30,7 +19,7 @@ const ProductCard = ({ product }) => {
       </div>
       <Button
         buttonType={BUTTON_TYPES_CLASSES.inverted}
-        onClick={multipleHandle}
+        onClick={addProducToCart}
       >
         Add to cart
       </Button>
