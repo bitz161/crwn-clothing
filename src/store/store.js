@@ -1,18 +1,18 @@
 import { compose, createStore, applyMiddleware } from "redux";
-
-//redux-persists imports
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
+import createSagaMiddleware from "@redux-saga/core";
 
 import logger from "redux-logger";
-// import { loggerMiddleware } from "./middleware/logger";
 
 import { rootReducer } from "./root-reducer";
 
 //don't show the middleware or logger once the system is in production
-const middleWares = [process.env.NODE_ENV !== "production" && logger].filter(
-  Boolean
-);
+const middleWares = [
+  process.env.NODE_ENV !== "production" && logger,
+  thunk,
+].filter(Boolean);
 
 const composeEnchancer =
   (process.env.NODE_ENV !== "production" &&
@@ -25,7 +25,7 @@ const composedEnhancers = composeEnchancer(applyMiddleware(...middleWares));
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["user"],
+  whitelist: ["cart"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
